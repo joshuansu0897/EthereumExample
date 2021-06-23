@@ -25,5 +25,4 @@ const input = {
 
 const output = JSON.parse(solc.compile(JSON.stringify(input)))
 
-console.log(JSON.stringify(output, null, 4))
-console.log(output);
+module.exports = output.contracts['Inbox.sol']
