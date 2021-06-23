@@ -10,14 +10,4 @@ services:
     volumes: 
       - ./:/usr/app
       - /usr/app/node_modules
-    depends_on:
-      - sol
-    environment:
-    command: npm run dev
-
-  sol:
-    image: ethereum/solc:0.5.4
-    tty: true
-    volumes: 
-      - ./contracts:/sources
-
+    command: sh
