@@ -16,7 +16,6 @@ const provider = new HDWalletProvider({
 
 const web3 = new Web3(provider)
 
-
 async function deploy() {
   const accounts = await web3.eth.getAccounts()
 
