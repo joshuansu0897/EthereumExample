@@ -19,7 +19,18 @@ beforeEach(async () => {
 })
 
 describe('Inbox', () => {
-  it('deploy a contract', () => {
-    console.log(contractInbox)
+  it('contract was deployed', () => {
+    assert.ok(contractInbox.options.address)
+  })
+
+  it('had initial message', async () => {
+    const msg = await contractInbox.methods.getMessage().call()
+    assert.strictEqual(msg, 'Hi there!')
+  })
+
+  it('changing initial message', async () => {
+    await contractInbox.methods.setMessage('bye').send({ from: accounts[0] })
+    const msg = await contractInbox.methods.getMessage().call()
+    assert.strictEqual(msg, 'bye')
   })
 })
