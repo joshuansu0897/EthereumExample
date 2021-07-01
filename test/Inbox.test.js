@@ -3,7 +3,7 @@ const Web3 = require('web3')
 const ganache = require('ganache-cli')
 const assert = require('assert')
 
-const Inbox = require('../compile').Inbox
+const Inbox = require('../compile')['Inbox.sol'].Inbox
 
 const web3 = new Web3(ganache.provider())
 

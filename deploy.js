@@ -2,7 +2,9 @@
 require('dotenv').config()
 const HDWalletProvider = require("@truffle/hdwallet-provider")
 const Web3 = require("web3")
-const Inbox = require('./compile').Inbox
+
+const Inbox = require('../compile')['Inbox.sol'].Inbox
+const Lottery = require('../compile')['Lottery.sol'].Lottery
 
 const mnemonicPhrase = process.env.WORDS
 const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID
@@ -26,6 +28,12 @@ async function deploy() {
     .send({ from: accounts[0], gas: '1000000' })
 
   console.log(`Contract deployed to ${contractInbox.options.address}`)
+
+  const contractLottery = await new web3.eth.Contract(Lottery.abi)
+    .deploy({ data: Lottery.evm.bytecode.object })
+    .send({ from: accounts[0], gas: '1000000' })
+
+  console.log(`Contract deployed to ${contractLottery.options.address}`)
 }
 
 deploy()
