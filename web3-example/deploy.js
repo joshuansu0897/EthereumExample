@@ -3,8 +3,8 @@ require('dotenv').config()
 const HDWalletProvider = require("@truffle/hdwallet-provider")
 const Web3 = require("web3")
 
-const Inbox = require('../compile')['Inbox.sol'].Inbox
-const Lottery = require('../compile')['Lottery.sol'].Lottery
+const Inbox = require('./compile')['Inbox.sol'].Inbox
+const Lottery = require('./compile')['Lottery.sol'].Lottery
 
 const mnemonicPhrase = process.env.WORDS
 const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID
